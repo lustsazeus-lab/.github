@@ -75,13 +75,13 @@ message="## 🚨 Plugin Health Alert ($(date -u +%Y-%m-%d))
 
 The following plugins have **$FAILURE_THRESHOLD+ consecutive workflow failures**:
 
+| Plugin | Consecutive Failures | Latest Runs |
+|--------|----------------------|-------------|
 "
 for entry in "${failed_repos[@]}"; do
   repo="${entry%%:*}"
   count="${entry##*:}"
-  message+="| Plugin | Consecutive Failures | Latest Runs |
-|--------|----------------------|-------------|
-| [$repo](https://github.com/$ORG/$repo/actions) | $count | [View](https://github.com/$ORG/$repo/actions) |
+  message+="| [$repo](https://github.com/$ORG/$repo/actions) | $count | [View](https://github.com/$ORG/$repo/actions) |
 
 "
 done
